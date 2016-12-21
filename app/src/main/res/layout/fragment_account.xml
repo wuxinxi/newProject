@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorText_white"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/add"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/addbill_text_shape"
+            android:gravity="center"
+            android:text="添加一笔" />
+
+        <ImageView
+            android:id="@+id/chose_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:src="@mipmap/icon_date" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="1dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/add"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/line"></View>
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/view"
+            android:layout_toLeftOf="@+id/view"
+            android:layout_toStartOf="@+id/view"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/income_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12月收入"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/income_money_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="88888888"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/view"
+            android:layout_toEndOf="@+id/view"
+            android:layout_toRightOf="@+id/view"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/spend_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12月支出"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/spend_money_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="88888"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/add_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ji_selector" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/add_2"></android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

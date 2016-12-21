@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--bottomBar底部-->
+    <color name="colorSelected">#FF4081</color>
+    <color name="colorInselect">#E0E0E0</color>
+
+    <color name="colorText_white">#FFFFFF</color>
+
+    <!--波纹-->
+    <color name="transparent">#00000000</color>
+    <color name="transparent_half_1">#10000000</color>
+
+    <color name="color_num_normal">#FCFCFC</color>
+    <color name="color_num">#E2E2E2</color>
+
+
+    <color name="colorBlack">#000000</color>
+
+    <!--支出-->
+    <color name="canyin">#F19E2B</color>
+    <color name="yanjiucha">#01579B</color>
+    <color name="jiaotong">#909A79</color>
+    <color name="gouwu">#E18784</color>
+    <color name="yule">#5A6CBC</color>
+    <color name="touzikunsun">#F5B365</color>
+    <color name="huafei">#3B5FF5</color>
+    <color name="zhufang">#A04B4B</color>
+    <color name="shuidianmei">#9E926B</color>
+    <color name="shuiguo">#93BF80</color>
+    <color name="lingshi">#FF6F00</color>
+    <color name="fuzhuang">#D4237A</color>
+    <color name="hongbao">#E54848</color>
+    <color name="mrmf">#D3B0A3</color>
+    <color name="shufai">#15E38E</color>
+    <color name="hufupin">#E8B4D8</color>
+    <color name="dianying">#727298</color>
+    <color name="yiyao">#D42311</color>
+    <color name="jianshen">#1296AB</color>
+    <color name="jiaoshui">#80C874</color>
+    <color name="jiaoyu">#6BC3E4</color>
+    <color name="jiudian">#553B6F</color>
+    <color name="lvyou">#EF5350</color>
+    <color name="weixiu">#FFC107</color>
+    <color name="qita">#1296DB</color>
+
+
+</resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/spend_money_count"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="收入:300" />
+
+        <TextView
+            android:id="@+id/income_money_count"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="收入:300" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="1dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_below="@id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/line"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/spend_money"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="花钱:300" />
+
+        <ImageView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view"
+            android:src="@mipmap/icon_canyin" />
+
+        <TextView
+            android:id="@+id/income_money"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="收入:300" />
+    </LinearLayout>
+
+
+</RelativeLayout>

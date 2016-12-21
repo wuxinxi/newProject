@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/match_match"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        style="@style/match_wrape"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ct_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+                style="@style/match_wrape"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.8"
+                app:layout_scrollFlags="scroll|snap|enterAlways|enterAlwaysCollapsed">
+
+                <com.wxx.pswnote.customview.CircleImageView
+                    android:id="@+id/imageHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:gravity="center"
+                    android:src="@mipmap/ic_placeholder"
+                    app:border_color="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/userName"
+                    style="@style/match_h_custom"
+                    android:gravity="center"
+                    android:text="@string/text_name"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:id="@+id/grade"
+                    style="@style/match_wrape"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text="@string/user_grade"
+                    android:textColor="@color/colorText_white"
+                    android:textSize="@dimen/grade_text_size" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/line_white"></View>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.wxx.pswnote.customview.ImageTextView
+                        android:id="@+id/net_sync"
+                        style="@style/match_match"
+                        android:layout_weight="1"
+                        android:background="@drawable/textimage_ripple"
+                        android:drawableLeft="@mipmap/icon_net_upload"
+                        android:drawablePadding="5dp"
+                        android:text="@string/net_sync"
+                        android:textColor="@color/colorText_white"
+                        android:textSize="@dimen/text_size" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/line_white"></View>
+
+                    <com.wxx.pswnote.customview.ImageTextView
+                        android:id="@+id/sign"
+                        style="@style/match_match"
+                        android:layout_weight="1"
+                        android:background="@drawable/textimage_ripple"
+                        android:drawableLeft="@mipmap/icon_sign"
+                        android:drawablePadding="5dp"
+                        android:text="@string/sign"
+                        android:textColor="@color/colorText_white"
+                        android:textSize="@dimen/text_size" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                android:visibility="gone"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_scrolling"></include>
+</android.support.design.widget.CoordinatorLayout>

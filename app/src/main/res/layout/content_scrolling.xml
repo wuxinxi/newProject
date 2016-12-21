@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@drawable/layout_line"
+        android:orientation="vertical"
+        android:showDividers="middle|end">
+
+        <TextView
+            android:id="@+id/remind"
+            style="@style/more_layout_textView"
+            android:drawableLeft="@mipmap/icon_tixing"
+            android:text="@string/remind" />
+
+        <TextView
+            android:id="@+id/theme"
+            style="@style/more_layout_textView"
+            android:drawableLeft="@mipmap/icon_theme"
+            android:text="@string/theme" />
+
+        <TextView
+            android:id="@+id/export"
+            style="@style/more_layout_textView"
+            android:drawableLeft="@mipmap/icon_export"
+            android:text="@string/export" />
+
+        <TextView
+            android:id="@+id/share"
+            style="@style/more_layout_textView"
+            android:drawableLeft="@mipmap/icon_share"
+            android:text="@string/share" />
+
+        <TextView
+            android:id="@+id/checkUpdate"
+            style="@style/more_layout_textView"
+            android:drawableLeft="@mipmap/icon_share"
+            android:text="@string/checkUpdate" />
+
+        <TextView
+            android:id="@+id/advice"
+            style="@style/more_layout_textView"
+            android:drawableLeft="@mipmap/icon_jianyi"
+            android:text="@string/advice" />
+
+        <TextView
+            android:id="@+id/good"
+            style="@style/more_layout_textView"
+            android:drawableLeft="@mipmap/icon_good"
+            android:text="@string/good" />
+
+        <TextView
+            android:id="@+id/setting"
+            style="@style/more_layout_textView"
+            android:drawableLeft="@mipmap/icon_setting"
+            android:text="@string/setting" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
