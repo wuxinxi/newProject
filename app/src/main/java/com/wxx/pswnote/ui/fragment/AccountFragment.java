@@ -3,7 +3,6 @@ package com.wxx.pswnote.ui.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,8 +14,11 @@ import android.widget.Toast;
 
 import com.wxx.pswnote.R;
 import com.wxx.pswnote.adapter.BillAdapter;
+import com.wxx.pswnote.base.BaseFragment;
 import com.wxx.pswnote.bean.Spend;
 import com.wxx.pswnote.listener.CustomClickListener;
+import com.wxx.pswnote.moudle.account.presenter.AccountPresenter;
+import com.wxx.pswnote.moudle.account.view.IAccountView;
 import com.wxx.pswnote.ui.activity.AddActivity;
 
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ import static android.app.Activity.RESULT_OK;
  * Created by Tangren_ on 2016/12/16.
  */
 
-public class AccountFragment extends Fragment implements CustomClickListener {
+public class AccountFragment extends BaseFragment<IAccountView, AccountPresenter> implements CustomClickListener, IAccountView {
     @InjectView(R.id.add)
     TextView add;
     @InjectView(R.id.chose_date)
@@ -147,5 +149,20 @@ public class AccountFragment extends Fragment implements CustomClickListener {
         if (resultCode == RESULT_OK) {
 
         }
+    }
+
+    @Override
+    protected AccountPresenter createPresenter() {
+        return new AccountPresenter(this);
+    }
+
+    @Override
+    public void showList(List<Spend> spends) {
+
+    }
+
+    @Override
+    public void showFail() {
+
     }
 }
