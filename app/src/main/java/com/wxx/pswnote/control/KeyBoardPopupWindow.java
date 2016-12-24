@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.PopupWindow;
 
-import com.socks.library.KLog;
 import com.wxx.pswnote.R;
 
 /**
@@ -22,7 +22,7 @@ public class KeyBoardPopupWindow extends PopupWindow {
 
     private Context context;
     private View view;
-    private Button num_1, num_2, num_3, num_4, num_5, num_6, num_7, num_8, num_9, num_0, dian, jia, jian, ok, del;
+    private Button num_1, num_2, num_3, num_4, num_5, num_6, num_7, num_8, num_9, num_0, jia, jian, ok, del;
 
     public KeyBoardPopupWindow(Context context, View.OnClickListener clickListener) {
         LayoutInflater inflater = (LayoutInflater) context
@@ -39,7 +39,6 @@ public class KeyBoardPopupWindow extends PopupWindow {
         num_7 = (Button) view.findViewById(R.id.num_7);
         num_8 = (Button) view.findViewById(R.id.num_8);
         num_9 = (Button) view.findViewById(R.id.num_9);
-        dian = (Button) view.findViewById(R.id.dian);
         jia = (Button) view.findViewById(R.id.jia);
         jian = (Button) view.findViewById(R.id.jian);
         ok = (Button) view.findViewById(R.id.ok);
@@ -54,7 +53,7 @@ public class KeyBoardPopupWindow extends PopupWindow {
         num_7.setOnClickListener(clickListener);
         num_8.setOnClickListener(clickListener);
         num_9.setOnClickListener(clickListener);
-        dian.setOnClickListener(clickListener);
+        del.setOnClickListener(clickListener);
         jia.setOnClickListener(clickListener);
         jian.setOnClickListener(clickListener);
         ok.setOnClickListener(clickListener);
@@ -64,6 +63,7 @@ public class KeyBoardPopupWindow extends PopupWindow {
         this.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
 //        this.setFocusable(true);
         this.setAnimationStyle(R.style.AnimBottom);
+        this.setInputMethodMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 //        ColorDrawable dw = new ColorDrawable(0xb0000000);
 //        this.setBackgroundDrawable(dw);
 
@@ -77,7 +77,6 @@ public class KeyBoardPopupWindow extends PopupWindow {
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     if (y < height) {
                         dismiss();
-                        KLog.d("y==" + y);
                     }
                 }
                 return true;

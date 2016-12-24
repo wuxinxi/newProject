@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="@color/colorText_white"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <LinearLayout
@@ -27,9 +27,13 @@
             android:id="@+id/money_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="22dp"
+            android:background="@null"
+            android:ellipsize="start"
             android:gravity="end|center_vertical"
-            android:text="@string/money"
+            android:hint="@string/money"
+            android:singleLine="true"
             android:textColor="@color/colorText_white"
             android:textSize="20dp" />
     </LinearLayout>
@@ -39,4 +43,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:overScrollMode="never"></android.support.v7.widget.RecyclerView>
-    </LinearLayout>
+
+</LinearLayout>

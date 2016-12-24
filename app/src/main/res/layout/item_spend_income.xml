@@ -18,12 +18,31 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/spend_money"
-            android:layout_width="100dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="收入:300" />
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/income_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="保险费"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/income_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="100"
+                android:textColor="@color/colorBlack" />
+        </LinearLayout>
+
 
         <ImageView
             android:id="@+id/type"
@@ -32,13 +51,29 @@
             android:layout_below="@id/view"
             android:src="@mipmap/icon_canyin" />
 
-        <TextView
-            android:id="@+id/income_money"
-            android:layout_width="100dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="收入:300" />
-    </LinearLayout>
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/spend_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="交通"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/spend_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="100"
+                android:textColor="@color/colorBlack" />
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

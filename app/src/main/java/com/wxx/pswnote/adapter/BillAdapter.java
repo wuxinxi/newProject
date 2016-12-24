@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.wxx.pswnote.R;
 import com.wxx.pswnote.bean.Spend;
 import com.wxx.pswnote.listener.CustomClickListener;
+import com.wxx.pswnote.viewholder.BillViewGroupHolder;
 import com.wxx.pswnote.viewholder.BillViewHolder;
 
 import java.util.List;
@@ -71,11 +72,19 @@ public class BillAdapter extends RecyclerView.Adapter {
     }
 
     private CustomClickListener listener;
+    private int ITEM_NORMAL = 0;
+    private int ITEM_GROUP = 1;
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_spend_income, parent, false);
-        return new BillViewHolder(view, listener);
+        if (viewType == ITEM_NORMAL) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_spend_income, parent, false);
+            return new BillViewHolder(view, listener);
+        } else if (viewType == ITEM_GROUP) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_spend_income_date, parent, false);
+            return new BillViewGroupHolder(view, listener);
+        }
+        return null;
     }
 
     @Override
@@ -83,14 +92,37 @@ public class BillAdapter extends RecyclerView.Adapter {
         Spend spend = list.get(position);
         if (spend == null)
             return;
-        BillViewHolder viewHolder = (BillViewHolder) holder;
-        bindData(spend, viewHolder.spend_money, viewHolder.income_money, viewHolder.type);
+        if (holder instanceof BillViewGroupHolder) {
+            bindGroupData(spend, (BillViewGroupHolder) holder);
+        } else {
+            BillViewHolder viewHolder = (BillViewHolder) holder;
+            bindData(spend, viewHolder.spend_money, viewHolder.spend_type, viewHolder.income_money, viewHolder.income_type, viewHolder.type);
+        }
+
 
     }
 
-    private void bindData(Spend spend, TextView spend_money, TextView income_money, ImageView type) {
+    private void bindGroupData(Spend spend, BillViewGroupHolder holder) {
+        bindData(spend, holder.spend_money, holder.spend_type, holder.income_money, holder.income_type, holder.type);
+        holder.time.setText(spend.getDate());
+        holder.countAmount.setText("200");
+    }
+
+    private void bindData(Spend spend, TextView spend_money, TextView spend_type, TextView income_money, TextView income_type, ImageView type) {
         spend_money.setText(spend.getSpendmoney());
+        spend_type.setText(spend.getSpendtype());
         income_money.setText(spend.getIncomemoney());
+        income_type.setText(spend.getIncometype());
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (position == 0)
+            return ITEM_GROUP;
+        String currentDate = list.get(position).getDate();
+        int index = position - 1;
+        boolean isDifferent = !list.get(index).getDate().equals(currentDate);
+        return isDifferent ? ITEM_GROUP : ITEM_NORMAL;
     }
 
     public void setClick(CustomClickListener listener) {

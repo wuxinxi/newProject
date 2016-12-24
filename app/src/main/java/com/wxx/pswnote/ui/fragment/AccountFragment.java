@@ -11,10 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wxx.pswnote.R;
 import com.wxx.pswnote.adapter.BillAdapter;
 import com.wxx.pswnote.bean.Spend;
+import com.wxx.pswnote.listener.CustomClickListener;
 import com.wxx.pswnote.ui.activity.AddActivity;
 
 import java.util.ArrayList;
@@ -24,11 +26,13 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * Created by Tangren_ on 2016/12/16.
  */
 
-public class AccountFragment extends Fragment {
+public class AccountFragment extends Fragment implements CustomClickListener {
     @InjectView(R.id.add)
     TextView add;
     @InjectView(R.id.chose_date)
@@ -73,19 +77,37 @@ public class AccountFragment extends Fragment {
         recyclerView.setLayoutManager(manager);
         mAdapter = new BillAdapter(getList());
         recyclerView.setAdapter(mAdapter);
-
+        mAdapter.setClick(this);
     }
 
 
     private List getList() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             Spend spend = new Spend();
-            spend.setDate("2016");
+            spend.setDate("2016-12-19");
             spend.setIcon(i);
-            spend.setIncomemoney("10" + i);
             spend.setSpendmoney("22" + i);
+            spend.setSpendtype("交通");
             list.add(spend);
         }
+        for (int i = 0; i < 5; i++) {
+            Spend spend = new Spend();
+            spend.setDate("2016-12-19");
+            spend.setIcon(i);
+            spend.setIncomemoney("22" + i);
+            spend.setIncometype("娱乐");
+            list.add(spend);
+        }
+        for (int i = 0; i < 5; i++) {
+            Spend spend = new Spend();
+            spend.setDate("2016-12-20");
+            spend.setIcon(i);
+            spend.setSpendtype("餐饮");
+            spend.setSpendmoney("1" + i);
+            list.add(spend);
+        }
+
+
         return list;
     }
 
@@ -97,13 +119,33 @@ public class AccountFragment extends Fragment {
 
     @OnClick({R.id.add, R.id.add_2})
     public void onClick(View view) {
+        Intent intent = new Intent(getActivity(), AddActivity.class);
         switch (view.getId()) {
             case R.id.add:
-                startActivity(new Intent(getActivity(), AddActivity.class));
+                startActivityForResult(intent, 0);
                 break;
             case R.id.add_2:
-                startActivity(new Intent(getActivity(), AddActivity.class));
+                startActivityForResult(intent, 0);
                 break;
+        }
+    }
+
+    @Override
+    public void onItemClick(View view, int postion) {
+        Toast.makeText(getActivity(), postion + "", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onTypeClick(View view, int postion) {
+        Toast.makeText(getActivity(), "TYPE", Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+
         }
     }
 }

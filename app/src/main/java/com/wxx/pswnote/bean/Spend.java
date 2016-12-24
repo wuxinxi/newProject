@@ -58,76 +58,122 @@ public class Spend {
     private int icon;
     private String spendmoney;
     private String incomemoney;
-    private String type;
+    private String spendtype;
+    private String incometype;
     private String time;
     private String date;
-    @Generated(hash = 376455866)
+
+
+    @Generated(hash = 734867630)
     public Spend(Long id, int icon, String spendmoney, String incomemoney,
-            String type, String time, String date) {
+            String spendtype, String incometype, String time, String date) {
         this.id = id;
         this.icon = icon;
         this.spendmoney = spendmoney;
         this.incomemoney = incomemoney;
-        this.type = type;
+        this.spendtype = spendtype;
+        this.incometype = incometype;
         this.time = time;
         this.date = date;
     }
+
+
     @Generated(hash = 698462423)
     public Spend() {
     }
-    public Long getId() {
-        return this.id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public int getIcon() {
-        return this.icon;
-    }
-    public void setIcon(int icon) {
-        this.icon = icon;
-    }
-    public String getSpendmoney() {
-        return this.spendmoney;
-    }
-    public void setSpendmoney(String spendmoney) {
-        this.spendmoney = spendmoney;
-    }
-    public String getIncomemoney() {
-        return this.incomemoney;
-    }
-    public void setIncomemoney(String incomemoney) {
-        this.incomemoney = incomemoney;
-    }
-    public String getType() {
-        return this.type;
-    }
-    public void setType(String type) {
-        this.type = type;
-    }
-    public String getTime() {
-        return this.time;
-    }
-    public void setTime(String time) {
-        this.time = time;
-    }
-    public String getDate() {
-        return this.date;
-    }
-    public void setDate(String date) {
-        this.date = date;
-    }
+    
 
     @Override
     public String toString() {
         return "Spend{" +
                 "id=" + id +
                 ", icon=" + icon +
-                ", spendmoney='" + spendmoney + '\'' +
-                ", incomemoney='" + incomemoney + '\'' +
-                ", type='" + type + '\'' +
+                ", spendmoney=" + spendmoney +
+                ", incomemoney=" + incomemoney +
+                ", spendtype='" + spendtype + '\'' +
+                ", incometype='" + incometype + '\'' +
                 ", time='" + time + '\'' +
                 ", date='" + date + '\'' +
                 '}';
+    }
+
+
+    public Long getId() {
+        return this.id;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+    public int getIcon() {
+        return this.icon;
+    }
+
+
+    public void setIcon(int icon) {
+        this.icon = icon;
+    }
+
+
+    public String getSpendmoney() {
+        return this.spendmoney;
+    }
+
+
+    public void setSpendmoney(String spendmoney) {
+        this.spendmoney = spendmoney;
+    }
+
+
+    public String getIncomemoney() {
+        return this.incomemoney;
+    }
+
+
+    public void setIncomemoney(String incomemoney) {
+        this.incomemoney = incomemoney;
+    }
+
+
+    public String getSpendtype() {
+        return this.spendtype;
+    }
+
+
+    public void setSpendtype(String spendtype) {
+        this.spendtype = spendtype;
+    }
+
+
+    public String getIncometype() {
+        return this.incometype;
+    }
+
+
+    public void setIncometype(String incometype) {
+        this.incometype = incometype;
+    }
+
+
+    public String getTime() {
+        return this.time;
+    }
+
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+
+    public String getDate() {
+        return this.date;
+    }
+
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

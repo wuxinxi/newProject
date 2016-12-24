@@ -28,9 +28,10 @@ public class SpendDao extends AbstractDao<Spend, Long> {
         public final static Property Icon = new Property(1, int.class, "icon", false, "ICON");
         public final static Property Spendmoney = new Property(2, String.class, "spendmoney", false, "SPENDMONEY");
         public final static Property Incomemoney = new Property(3, String.class, "incomemoney", false, "INCOMEMONEY");
-        public final static Property Type = new Property(4, String.class, "type", false, "TYPE");
-        public final static Property Time = new Property(5, String.class, "time", false, "TIME");
-        public final static Property Date = new Property(6, String.class, "date", false, "DATE");
+        public final static Property Spendtype = new Property(4, String.class, "spendtype", false, "SPENDTYPE");
+        public final static Property Incometype = new Property(5, String.class, "incometype", false, "INCOMETYPE");
+        public final static Property Time = new Property(6, String.class, "time", false, "TIME");
+        public final static Property Date = new Property(7, String.class, "date", false, "DATE");
     }
 
 
@@ -50,9 +51,10 @@ public class SpendDao extends AbstractDao<Spend, Long> {
                 "\"ICON\" INTEGER NOT NULL ," + // 1: icon
                 "\"SPENDMONEY\" TEXT," + // 2: spendmoney
                 "\"INCOMEMONEY\" TEXT," + // 3: incomemoney
-                "\"TYPE\" TEXT," + // 4: type
-                "\"TIME\" TEXT," + // 5: time
-                "\"DATE\" TEXT);"); // 6: date
+                "\"SPENDTYPE\" TEXT," + // 4: spendtype
+                "\"INCOMETYPE\" TEXT," + // 5: incometype
+                "\"TIME\" TEXT," + // 6: time
+                "\"DATE\" TEXT);"); // 7: date
     }
 
     /** Drops the underlying database table. */
@@ -81,19 +83,24 @@ public class SpendDao extends AbstractDao<Spend, Long> {
             stmt.bindString(4, incomemoney);
         }
  
-        String type = entity.getType();
-        if (type != null) {
-            stmt.bindString(5, type);
+        String spendtype = entity.getSpendtype();
+        if (spendtype != null) {
+            stmt.bindString(5, spendtype);
+        }
+ 
+        String incometype = entity.getIncometype();
+        if (incometype != null) {
+            stmt.bindString(6, incometype);
         }
  
         String time = entity.getTime();
         if (time != null) {
-            stmt.bindString(6, time);
+            stmt.bindString(7, time);
         }
  
         String date = entity.getDate();
         if (date != null) {
-            stmt.bindString(7, date);
+            stmt.bindString(8, date);
         }
     }
 
@@ -117,19 +124,24 @@ public class SpendDao extends AbstractDao<Spend, Long> {
             stmt.bindString(4, incomemoney);
         }
  
-        String type = entity.getType();
-        if (type != null) {
-            stmt.bindString(5, type);
+        String spendtype = entity.getSpendtype();
+        if (spendtype != null) {
+            stmt.bindString(5, spendtype);
+        }
+ 
+        String incometype = entity.getIncometype();
+        if (incometype != null) {
+            stmt.bindString(6, incometype);
         }
  
         String time = entity.getTime();
         if (time != null) {
-            stmt.bindString(6, time);
+            stmt.bindString(7, time);
         }
  
         String date = entity.getDate();
         if (date != null) {
-            stmt.bindString(7, date);
+            stmt.bindString(8, date);
         }
     }
 
@@ -145,9 +157,10 @@ public class SpendDao extends AbstractDao<Spend, Long> {
             cursor.getInt(offset + 1), // icon
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // spendmoney
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // incomemoney
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // type
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // time
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6) // date
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // spendtype
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // incometype
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // time
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // date
         );
         return entity;
     }
@@ -158,9 +171,10 @@ public class SpendDao extends AbstractDao<Spend, Long> {
         entity.setIcon(cursor.getInt(offset + 1));
         entity.setSpendmoney(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setIncomemoney(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setType(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setTime(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setDate(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setSpendtype(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setIncometype(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setTime(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setDate(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
      }
     
     @Override

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PswNote</string>
+    <string name="app_name">记账</string>
 
     <!--MoreFragment-->
     <string name="text_name">唐人</string>
@@ -17,7 +17,7 @@
     <string name="checkUpdate">检查更新</string>
 
     <string name="type">类型</string>
-    <string name="money">0.00</string>
+    <string name="money">0</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"

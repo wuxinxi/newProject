@@ -10,4 +10,6 @@ import android.view.View;
 
 public interface CustomClickListener {
     void onItemClick(View view, int postion);
+
+    void onTypeClick(View view, int postion);
 }

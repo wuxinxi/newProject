@@ -3,12 +3,10 @@ package com.wxx.pswnote.viewholder;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wxx.pswnote.MyApplication;
 import com.wxx.pswnote.R;
 import com.wxx.pswnote.listener.CustomClickListener;
 
@@ -62,7 +60,9 @@ import com.wxx.pswnote.listener.CustomClickListener;
 
 public class BillViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public TextView spend_money;
+    public TextView spend_type;
     public TextView income_money;
+    public TextView income_type;
     public ImageView type;
     private CustomClickListener listener;
 
@@ -71,22 +71,21 @@ public class BillViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         this.listener = listener;
         spend_money = (TextView) itemView.findViewById(R.id.spend_money);
         income_money = (TextView) itemView.findViewById(R.id.income_money);
+        spend_type = (TextView) itemView.findViewById(R.id.spend_type);
+        income_type = (TextView) itemView.findViewById(R.id.income_type);
         type = (ImageView) itemView.findViewById(R.id.type);
         itemView.setOnClickListener(this);
+        type.setOnClickListener(this);
     }
 
-    /**
-     * Called when a view has been clicked.
-     *
-     * @param v The view that was clicked.
-     */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onClick(View v) {
         if (listener != null) {
-            Log.d("Tag", "----------------");
-
-            listener.onItemClick(v, getAdapterPosition());
+            if (v == itemView)
+                listener.onItemClick(v, getAdapterPosition());
+            else if (v == type)
+                listener.onTypeClick(v, getAdapterPosition());
         }
     }
 }
