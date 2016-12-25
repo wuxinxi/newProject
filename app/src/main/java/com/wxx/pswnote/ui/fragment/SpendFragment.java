@@ -209,6 +209,8 @@ public class SpendFragment extends BaseFragment<ISpendList, SpendPresenter> impl
                     break;
                 case R.id.ok:
                     popupWindow.dismiss();
+                    if (moneyText.getText().toString().trim().endsWith("+") || moneyText.getText().toString().trim().endsWith("-"))
+                        return;
                     stringBuffer = new StringBuffer(moneyText.getText().toString());
                     jisuan();
                     moneyText.setText(stringBuffer);
@@ -217,7 +219,7 @@ public class SpendFragment extends BaseFragment<ISpendList, SpendPresenter> impl
 //                    Spend spend = new Spend(null, Utils.images[postion], stringBuffer + "", null, TYPE, null, Utils.getDate(), Utils.getTime());
 //                    spendHelper.save(spend);
 //                    KLog.d(spend.toString());
-                    getActivity().setResult(RESULT_OK,new Intent());
+                    getActivity().setResult(RESULT_OK, new Intent());
                     getActivity().finish();
                     getActivity().overridePendingTransition(0, R.anim.base_slide_right_out);
                     break;
