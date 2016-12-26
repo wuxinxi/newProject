@@ -70,48 +70,46 @@ public class AccountFragment extends BaseFragment<IAccountView, AccountPresenter
         ViewGroup group = (ViewGroup) rootView.getParent();
         if (group != null)
             group.removeView(rootView);
-        ButterKnife.inject(this, rootView);
+
         return rootView;
     }
 
     private void initView() {
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(manager);
-        mAdapter = new BillAdapter(getList());
-        recyclerView.setAdapter(mAdapter);
-        mAdapter.setClick(this);
+        mPresneter.fetchSpendAccount();
     }
 
-
-    private List getList() {
-        for (int i = 0; i < 5; i++) {
-            Spend spend = new Spend();
-            spend.setDate("2016-12-19");
-            spend.setIcon(i);
-            spend.setSpendmoney("22" + i);
-            spend.setSpendtype("交通");
-            list.add(spend);
-        }
-        for (int i = 0; i < 5; i++) {
-            Spend spend = new Spend();
-            spend.setDate("2016-12-19");
-            spend.setIcon(i);
-            spend.setIncomemoney("22" + i);
-            spend.setIncometype("娱乐");
-            list.add(spend);
-        }
-        for (int i = 0; i < 5; i++) {
-            Spend spend = new Spend();
-            spend.setDate("2016-12-20");
-            spend.setIcon(i);
-            spend.setSpendtype("餐饮");
-            spend.setSpendmoney("1" + i);
-            list.add(spend);
-        }
-
-
-        return list;
-    }
+//
+//    private List getList() {
+//        for (int i = 0; i < 5; i++) {
+//            Spend spend = new Spend();
+//            spend.setDate("2016-12-19");
+//            spend.setIcon(i);
+//            spend.setSpendmoney("22" + i);
+//            spend.setSpendtype("交通");
+//            list.add(spend);
+//        }
+//        for (int i = 0; i < 5; i++) {
+//            Spend spend = new Spend();
+//            spend.setDate("2016-12-19");
+//            spend.setIcon(i);
+//            spend.setIncomemoney("22" + i);
+//            spend.setIncometype("娱乐");
+//            list.add(spend);
+//        }
+//        for (int i = 0; i < 5; i++) {
+//            Spend spend = new Spend();
+//            spend.setDate("2016-12-20");
+//            spend.setIcon(i);
+//            spend.setSpendtype("餐饮");
+//            spend.setSpendmoney("1" + i);
+//            list.add(spend);
+//        }
+//
+//
+//        return list;
+//    }
 
     @Override
     public void onDestroyView() {
@@ -147,7 +145,9 @@ public class AccountFragment extends BaseFragment<IAccountView, AccountPresenter
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-
+//            list.clear();
+            mPresneter.fetchSpendAccount();
+            mAdapter.notifyDataSetChanged();
         }
     }
 
@@ -158,7 +158,9 @@ public class AccountFragment extends BaseFragment<IAccountView, AccountPresenter
 
     @Override
     public void showList(List<Spend> spends) {
-
+        mAdapter = new BillAdapter(spends);
+        recyclerView.setAdapter(mAdapter);
+        mAdapter.setClick(this);
     }
 
     @Override

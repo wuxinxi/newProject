@@ -13,8 +13,8 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         android:orientation="horizontal"
-        app:layout_collapseMode="pin"
-        app:popupTheme="@style/AppTheme.PopupOverlay">
+        android:popupTheme="@style/AppTheme.PopupOverlay"
+        app:layout_collapseMode="pin">
 
         <LinearLayout
             android:id="@+id/back"

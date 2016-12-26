@@ -38,6 +38,17 @@ public class Utils {
             "住房", "水电煤", "水果", "零食", "服饰", "红包", "美容美发", "蔬菜", "护肤品", "电影", "医药", "健身", "交税", "教育", "酒店", "旅游", "维修", "其他"};
 
 
+    public static int[] inComeImages = {R.mipmap.ic_in_gongzi, R.mipmap.ic_in_jiangjin, R.mipmap.ic_in_fuli,
+            R.mipmap.ic_in_touzi, R.mipmap.ic_in_jianzhi, R.mipmap.ic_in_shenghuofei,
+            R.mipmap.ic_in_baoxiao, R.mipmap.ic_in_tuikuan, R.mipmap.ic_in_lijin,
+            R.mipmap.ic_in_zhuanqian, R.mipmap.ic_hongbao, R.mipmap.ic_in_daikuan,
+            R.mipmap.ic_in_yiwaishouru, R.mipmap.ic_in_zujin, R.mipmap.ic_in_zhongjiang,
+            R.mipmap.ic_in_lixi, R.mipmap.ic_in_fenhong};
+
+    public static String[] iComeName = {"工资", "奖金", "福利", "投资盈利", "兼职", "生活费", "报销",
+            "退款", "礼金", "赚钱", "领红包", "贷款", "意外收入", "租金", "中奖", "利息", "分红"};
+
+
     public static void setColor(LinearLayout linearLayout, int postion) {
         linearLayout.setBackgroundResource(colors[postion]);
     }

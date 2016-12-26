@@ -47,10 +47,13 @@ public class AddActivity extends AppCompatActivity {
         viewPage.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                if (position == 0)
+                if (position == 0) {
                     return new SpendFragment();
-                else
+                } else{
                     return new InComeFragment();
+                }
+
+
             }
 
             @Override

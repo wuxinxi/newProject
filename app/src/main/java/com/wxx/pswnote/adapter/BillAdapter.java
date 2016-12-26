@@ -113,6 +113,7 @@ public class BillAdapter extends RecyclerView.Adapter {
         spend_type.setText(spend.getSpendtype());
         income_money.setText(spend.getIncomemoney());
         income_type.setText(spend.getIncometype());
+        type.setImageResource(spend.getIcon());
     }
 
     @Override

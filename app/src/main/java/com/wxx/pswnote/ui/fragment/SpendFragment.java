@@ -21,6 +21,7 @@ import com.socks.library.KLog;
 import com.wxx.pswnote.R;
 import com.wxx.pswnote.adapter.SpendAdapter;
 import com.wxx.pswnote.base.BaseFragment;
+import com.wxx.pswnote.bean.Spend;
 import com.wxx.pswnote.bean.SpendBean;
 import com.wxx.pswnote.control.KeyBoardPopupWindow;
 import com.wxx.pswnote.database.DbUtil;
@@ -41,6 +42,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 import static android.app.Activity.RESULT_OK;
+import static android.widget.Toast.makeText;
 import static com.wxx.pswnote.R.id.money_layout;
 
 /**
@@ -94,7 +96,6 @@ public class SpendFragment extends BaseFragment<ISpendList, SpendPresenter> impl
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
         mPresneter.fetchList();
-        mAdapter.setClick(this);
 
         detector = new GestureDetector(getActivity(), this);//手势监听
 
@@ -138,6 +139,7 @@ public class SpendFragment extends BaseFragment<ISpendList, SpendPresenter> impl
         this.list = spendBeanList;
         mAdapter = new SpendAdapter(getActivity(), spendBeanList);
         recyclerView.setAdapter(mAdapter);
+        mAdapter.setClick(this);
     }
 
     @Override
@@ -209,16 +211,17 @@ public class SpendFragment extends BaseFragment<ISpendList, SpendPresenter> impl
                     break;
                 case R.id.ok:
                     popupWindow.dismiss();
-                    if (moneyText.getText().toString().trim().endsWith("+") || moneyText.getText().toString().trim().endsWith("-"))
-                        return;
                     stringBuffer = new StringBuffer(moneyText.getText().toString());
+                    if (stringBuffer.toString().endsWith("+") || stringBuffer.toString().endsWith("-")) {
+                        stringBuffer.deleteCharAt(stringBuffer.length() - 1);
+                    }
                     jisuan();
                     moneyText.setText(stringBuffer);
 
                     //保存并退出
-//                    Spend spend = new Spend(null, Utils.images[postion], stringBuffer + "", null, TYPE, null, Utils.getDate(), Utils.getTime());
-//                    spendHelper.save(spend);
-//                    KLog.d(spend.toString());
+                    Spend spend = new Spend(null, Utils.images[postion], stringBuffer + "", null, TYPE, null, Utils.getTime(), Utils.getDate());
+                    spendHelper.save(spend);
+                    KLog.d(spend.toString());
                     getActivity().setResult(RESULT_OK, new Intent());
                     getActivity().finish();
                     getActivity().overridePendingTransition(0, R.anim.base_slide_right_out);
@@ -293,7 +296,7 @@ public class SpendFragment extends BaseFragment<ISpendList, SpendPresenter> impl
         } else if ("-".equals(fuhao)) {
             decimal = number1.subtract(number2);
             if (decimal.doubleValue() < 0) {
-                Toast.makeText(getActivity(), "不能为负数！", Toast.LENGTH_SHORT).show();
+                makeText(getActivity(), "不能为负数！", Toast.LENGTH_SHORT).show();
                 return new BigDecimal("0");
             }
         }
@@ -334,23 +337,6 @@ public class SpendFragment extends BaseFragment<ISpendList, SpendPresenter> impl
         }
     }
 
-    private static boolean Equ(String str, char[] ch) {
-        if (str.charAt(str.length() - 1) == ch[0]) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private static boolean Equ2(String str, char[] ch) {
-        if (str.charAt(str.length() - 1) == ch[0]) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
     private void delNum() {
         String result = moneyText.getText().toString();
         if (result.equals(""))
@@ -385,7 +371,7 @@ public class SpendFragment extends BaseFragment<ISpendList, SpendPresenter> impl
         if (distanceY > 0) {
             if (popupWindow.isShowing())
                 popupWindow.dismiss();
-        } else {
+        } else if (distanceY < 0) {
             if (popupWindow.isShowing())
                 popupWindow.dismiss();
         }
@@ -403,19 +389,6 @@ public class SpendFragment extends BaseFragment<ISpendList, SpendPresenter> impl
 
     }
 
-    /**
-     * Notified of a fling event when it occurs with the initial on down {@link MotionEvent}
-     * and the matching up {@link MotionEvent}. The calculated velocity is supplied along
-     * the x and y axis in pixels per second.
-     *
-     * @param e1        The first down motion event that started the fling.
-     * @param e2        The move motion event that triggered the current onFling.
-     * @param velocityX The velocity of this fling measured in pixels per second
-     *                  along the x axis.
-     * @param velocityY The velocity of this fling measured in pixels per second
-     *                  along the y axis.
-     * @return true if the event is consumed, else false
-     */
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
         return false;
@@ -428,4 +401,5 @@ public class SpendFragment extends BaseFragment<ISpendList, SpendPresenter> impl
             parent = ((ViewGroup) getActivity().findViewById(R.id.recyclerView)).getChildAt(0);
         popupWindow.showAtLocation(parent, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
     }
+
 }
