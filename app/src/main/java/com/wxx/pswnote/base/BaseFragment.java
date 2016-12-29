@@ -5,8 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
-import com.socks.library.KLog;
-
 /**
  * Created by Tangren on 2016/12/6 0006
  * Email:wu_tangren@163.com
@@ -49,12 +47,10 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Fragme
     @Override
     public void onPause() {
         super.onPause();
-        KLog.d("BaseFragment--onPause");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        KLog.d("BaseFragment--onStop");
     }
 }

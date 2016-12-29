@@ -3,9 +3,16 @@ package com.wxx.pswnote.utils;
 import android.widget.LinearLayout;
 
 import com.wxx.pswnote.R;
+import com.wxx.pswnote.bean.Spend;
+import com.wxx.pswnote.database.DbUtil;
+import com.wxx.pswnote.database.table.bill.SpendHelper;
 
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 作者：Tangren_ on 2016/12/21 0021.
@@ -18,6 +25,11 @@ public class Utils {
 
     private static SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
     private static SimpleDateFormat sdfTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+    private static SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy");
+    private static SimpleDateFormat sdfMonth = new SimpleDateFormat("MM");
+    private static SimpleDateFormat sdfDay = new SimpleDateFormat("dd");
+
     private static Date date = new Date();
 
     private static final int[] colors = {R.color.canyin, R.color.yanjiucha, R.color.jiaotong,
@@ -60,4 +72,52 @@ public class Utils {
     public static String getTime() {
         return sdfTime.format(date);
     }
+
+    //得到年份
+    public static int getYear(String date) {
+        String dateString = null;
+        try {
+            Date d = sdfDate.parse(date);
+            dateString = sdfYear.format(d);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return Integer.valueOf(dateString);
+    }
+
+    //    //得到月份
+    public static int getMonth(String date) {
+        String dateString = null;
+        try {
+            Date d = sdfDate.parse(date);
+            dateString = sdfMonth.format(d);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return Integer.valueOf(dateString);
+
+    }
+
+    //得到那一天
+    public static int getDay(String date) {
+        String dateString = null;
+        try {
+            Date d = sdfDate.parse(date);
+            dateString = sdfDay.format(d);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return Integer.valueOf(dateString);
+    }
+
+    private static DecimalFormat format = new DecimalFormat("#00");
+
+    public static String checkDay(int day) {
+        return format.format(day);
+    }
+
+    private static SpendHelper helper = DbUtil.getDriverSpendHelper();
+    private static List<Spend> list = new ArrayList<Spend>();
+
+
 }

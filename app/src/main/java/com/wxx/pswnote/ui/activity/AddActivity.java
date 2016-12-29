@@ -1,5 +1,7 @@
 package com.wxx.pswnote.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -34,6 +36,14 @@ public class AddActivity extends AppCompatActivity {
 
     private String items[] = new String[]{"支出", "收入"};
 
+    private static String KEY_DATE = "date";
+
+    public static void start(Context context, String date) {
+        Intent intent = new Intent(context, AddActivity.class);
+        intent.putExtra(KEY_DATE, date);
+        context.startActivity(intent);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +54,14 @@ public class AddActivity extends AppCompatActivity {
 
     private void initView() {
 
+        String date = getIntent().getStringExtra(KEY_DATE);
         viewPage.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
                 if (position == 0) {
-                    return new SpendFragment();
-                } else{
-                    return new InComeFragment();
+                    return new SpendFragment(date);
+                } else {
+                    return new InComeFragment(date);
                 }
 
 

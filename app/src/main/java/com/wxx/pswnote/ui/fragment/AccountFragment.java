@@ -20,6 +20,8 @@ import com.wxx.pswnote.listener.CustomClickListener;
 import com.wxx.pswnote.moudle.account.presenter.AccountPresenter;
 import com.wxx.pswnote.moudle.account.view.IAccountView;
 import com.wxx.pswnote.ui.activity.AddActivity;
+import com.wxx.pswnote.ui.activity.DateChoseActivity;
+import com.wxx.pswnote.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,15 +119,20 @@ public class AccountFragment extends BaseFragment<IAccountView, AccountPresenter
         ButterKnife.reset(this);
     }
 
-    @OnClick({R.id.add, R.id.add_2})
+    @OnClick({R.id.add, R.id.add_2, R.id.chose_date})
     public void onClick(View view) {
         Intent intent = new Intent(getActivity(), AddActivity.class);
+        intent.putExtra("date", Utils.getDate());
         switch (view.getId()) {
             case R.id.add:
                 startActivityForResult(intent, 0);
                 break;
             case R.id.add_2:
                 startActivityForResult(intent, 0);
+                break;
+            case R.id.chose_date:
+                Intent intent2 = new Intent(getActivity(), DateChoseActivity.class);
+                startActivityForResult(intent2, 0);
                 break;
         }
     }
@@ -167,4 +174,5 @@ public class AccountFragment extends BaseFragment<IAccountView, AccountPresenter
     public void showFail() {
 
     }
+
 }

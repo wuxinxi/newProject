@@ -20,7 +20,6 @@
             android:id="@+id/back"
             android:layout_width="?attr/actionBarSize"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/back_ripple"
             android:gravity="center">
 
             <ImageView

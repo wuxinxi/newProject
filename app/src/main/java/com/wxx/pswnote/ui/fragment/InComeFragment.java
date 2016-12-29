@@ -72,6 +72,12 @@ public class InComeFragment extends BaseFragment<InComeList, InComePresenter> im
 
     private SpendHelper spendHelper;
 
+    private String date;
+
+    public InComeFragment(String date) {
+        this.date = date;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -175,7 +181,7 @@ public class InComeFragment extends BaseFragment<InComeList, InComePresenter> im
                     //保存并退出
 //                    Long id, int icon, String spendmoney, String incomemoney,
 //                        String spendtype, String incometype, String time, String date
-                    Spend spend = new Spend(null, Utils.inComeImages[postion], null, stringBuffer.toString(),null , TYPE, Utils.getTime(), Utils.getDate());
+                    Spend spend = new Spend(null, Utils.inComeImages[postion], null, stringBuffer.toString(), null, TYPE, Utils.getTime(), date);
                     spendHelper.save(spend);
                     KLog.d(spend.toString());
                     getActivity().setResult(RESULT_OK, new Intent());

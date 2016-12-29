@@ -75,6 +75,13 @@ public class SpendFragment extends BaseFragment<ISpendList, SpendPresenter> impl
 
     private SpendHelper spendHelper;
 
+    private String date;
+
+    public SpendFragment(String date) {
+        this.date = date;
+        Log.e(TAG, date);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -87,7 +94,6 @@ public class SpendFragment extends BaseFragment<ISpendList, SpendPresenter> impl
         ViewGroup group = (ViewGroup) rootView.getParent();
         if (group != null)
             group.removeView(rootView);
-        ButterKnife.inject(this, rootView);
         return rootView;
     }
 
@@ -121,6 +127,7 @@ public class SpendFragment extends BaseFragment<ISpendList, SpendPresenter> impl
         );
 
         spendHelper = DbUtil.getDriverSpendHelper();
+
     }
 
     @Override
@@ -219,7 +226,7 @@ public class SpendFragment extends BaseFragment<ISpendList, SpendPresenter> impl
                     moneyText.setText(stringBuffer);
 
                     //保存并退出
-                    Spend spend = new Spend(null, Utils.images[postion], stringBuffer + "", null, TYPE, null, Utils.getTime(), Utils.getDate());
+                    Spend spend = new Spend(null, Utils.images[postion], stringBuffer + "", null, TYPE, null, Utils.getTime(), date);
                     spendHelper.save(spend);
                     KLog.d(spend.toString());
                     getActivity().setResult(RESULT_OK, new Intent());
